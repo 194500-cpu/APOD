@@ -21,3 +21,31 @@ body {
     margin-left: 1rem;
 
 }
+
+#cycle {
+  position: fixed;
+  bottom: 35px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+#cyclebutton {
+  padding: 12px 28px;
+  font-size: 17px;
+  font-weight: bold;
+  color: white;
+  background: #151a2d;
+  border: 1px solid #555d80;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+#cyclebutton:hover {
+  background: #252d4d;
+  transform: scale(1.06);
+}
+
+#cyclebutton:active {
+  transform: scale(0.96);
+}
