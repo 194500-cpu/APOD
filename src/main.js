@@ -24,6 +24,11 @@ function cyclePlanets() {
   if (currentplanet >= 8) {
     currentplanet = 0;
   }
+  if (currentplanet == 5) {
+    rings.visible = true;
+  } else {
+    rings.visible = false;
+  }
 
   planet.material.map = loadPlanetTexture(
     planets[currentplanet]
@@ -75,6 +80,24 @@ const geometry = new THREE.SphereGeometry(1, 64, 64);
 
 const planet = new THREE.Mesh(geometry, material);
 
+
+const ringGeometry = new THREE.RingGeometry(
+  1.25,
+  1.9,
+  64
+);
+
+const ringMaterial = new THREE.MeshBasicMaterial({
+  color: new THREE.Color(0xc8c8c8),
+  side: THREE.DoubleSide,
+  transparent: true,
+  opacity: 0.8
+});
+
+const rings = new THREE.Mesh(ringGeometry, ringMaterial);
+rings.rotation.x = Math.PI / 2;
+
+
 scene.add(planet);
 
 const light = new THREE.DirectionalLight(0xffffff, 3);
@@ -98,5 +121,6 @@ function animate() {
 
   renderer.render(scene, camera);
 }
-
+planet.add(rings);
+rings.visible = false;
 animate();
