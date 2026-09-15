@@ -25,9 +25,16 @@ function cyclePlanets() {
     currentplanet = 0;
   }
 
+  planet.material.map = loadPlanetTexture(
+    planets[currentplanet]
+  );
+
+  planet.material.needsUpdate = true;
+
 }
-document.getElementById("cyclebutton")
-document.addEventListener("click", cyclePlanets);
+const cycleButton = document.getElementById("cyclebutton");
+
+cycleButton.addEventListener("click", cyclePlanets);
 
 const scene = new THREE.Scene();
 
@@ -40,6 +47,21 @@ const camera = new THREE.PerspectiveCamera(
 
 camera.position.z = 3;
 
+const textureLoader = new THREE.TextureLoader();
+function loadPlanetTexture(name) {
+  return textureLoader.load(
+    import.meta.env.BASE_URL +
+    "textures/" +
+    name.toLowerCase() +
+    ".png"
+  );
+}
+
+const material = new THREE.MeshStandardMaterial({
+  map: loadPlanetTexture(planets[0])
+});
+
+
 const renderer = new THREE.WebGLRenderer({
   antialias: true,
   alpha: true
@@ -50,10 +72,6 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 document.getElementById("app").appendChild(renderer.domElement);
 
 const geometry = new THREE.SphereGeometry(1, 64, 64);
-
-const material = new THREE.MeshStandardMaterial({
-  color: 0x4477ff
-});
 
 const planet = new THREE.Mesh(geometry, material);
 
