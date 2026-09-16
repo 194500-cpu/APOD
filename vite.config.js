@@ -8,7 +8,7 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve(__dirname, 'index.html'),
-        planet: resolve(__dirname, 'planet.html')
+        planet: resolve(__dirname, 'planets.html')
       }
     }
   }
