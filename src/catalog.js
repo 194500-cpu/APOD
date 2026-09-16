@@ -1,0 +1,2 @@
+import '../catalog.css'
+

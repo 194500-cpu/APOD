@@ -1,0 +1,63 @@
+
+  body {
+    text-align: center;
+    color: white;
+    background: black;
+    font-family: "Orbitron", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+
+  } 
+
+#navbar {
+    display: flex;
+    width: 50%;
+    justify-content: center;
+    align-items: center;
+    margin-left: 25%;
+    background-color: rgb(108, 84, 84);
+    border-radius: 30px;
+}
+
+
+#navbartitle {
+    color: white;
+    font-size: 1.5rem;
+    margin-left: 1rem;
+
+}
+
+
+#catalog {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 2px;
+}
+
+.item {
+  background: #2b2f37;
+  border-radius: 16px;
+  padding: 2px;
+  height: width;
+  text-align: center;
+  text-decoration: none;
+  color: white;
+
+  transition: 0.2s;
+}
+
+.item:hover {
+  transform: translateY(-5px);
+  background: #1f2937;
+}
+
+.item img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+
+  object-fit: contain;
+}

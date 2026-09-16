@@ -1,4 +1,4 @@
-import '../style.css'
+import '../view.css'
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 console.log(THREE);
@@ -15,31 +15,34 @@ var planets = [
   "neptune"
 ]
 
+const params = new URLSearchParams(window.location.search);
+const currentPlanet = params.get("planet");
 
-var currentplanet = 0;
 
-function cyclePlanets() {
-  console.log(currentplanet);
-  currentplanet++;
-  if (currentplanet >= 8) {
-    currentplanet = 0;
-  }
-  if (currentplanet == 5) {
-    rings.visible = true;
-  } else {
-    rings.visible = false;
-  }
 
-  planet.material.map = loadPlanetTexture(
-    planets[currentplanet]
-  );
+// function cyclePlanets() {
+//   console.log(currentplanet);
+//   currentplanet++;
+//   if (currentplanet >= 8) {
+//     currentplanet = 0;
+//   }
+//   if (currentplanet == 5) {
+//     rings.visible = true;
+//   } else {
+//     rings.visible = false;
+//   }
 
-  planet.material.needsUpdate = true;
 
-}
-const cycleButton = document.getElementById("cyclebutton");
+//   planet.material.map = loadPlanetTexture(
+//     planets[planet]
+//   );
 
-cycleButton.addEventListener("click", cyclePlanets);
+//   planet.material.needsUpdate = true;
+
+// }
+// const cycleButton = document.getElementById("cyclebutton");
+
+// cycleButton.addEventListener("click", cyclePlanets);
 
 const scene = new THREE.Scene();
 
@@ -80,6 +83,12 @@ const geometry = new THREE.SphereGeometry(1, 64, 64);
 
 const planet = new THREE.Mesh(geometry, material);
 
+planet.material.map = loadPlanetTexture(
+    currentPlanet
+  );
+
+  planet.material.needsUpdate = true;
+
 
 const ringGeometry = new THREE.RingGeometry(
   1.25,
@@ -87,19 +96,27 @@ const ringGeometry = new THREE.RingGeometry(
   64
 );
 
+const ringTexture = textureLoader.load(
+  import.meta.env.BASE_URL + "textures/ringssaturn.png"
+);
 const ringMaterial = new THREE.MeshBasicMaterial({
-  color: new THREE.Color(0xc8c8c8),
+  map: ringTexture,
   side: THREE.DoubleSide,
   transparent: true,
-  opacity: 0.8
+  opacity: 0.9
 });
 
 const rings = new THREE.Mesh(ringGeometry, ringMaterial);
 rings.rotation.x = Math.PI / 2;
+if (currentPlanet == "saturn") {
+    rings.visible = true;
+  } else {
+    rings.visible = false;
+}
 
 
 scene.add(planet);
-
+scene.add(rings);
 const light = new THREE.DirectionalLight(0xffffff, 3);
 
 light.position.set(5, 3, 5);
@@ -112,6 +129,15 @@ const controls = new OrbitControls(camera, renderer.domElement);
 
 controls.enableDamping = true;
 
+camera.setViewOffset(
+  window.innerWidth,
+  window.innerHeight,
+  0,
+  70, 
+  window.innerWidth,
+  window.innerHeight
+);
+camera.position.y = 2;
 function animate() {
   requestAnimationFrame(animate);
 
@@ -122,5 +148,4 @@ function animate() {
   renderer.render(scene, camera);
 }
 planet.add(rings);
-rings.visible = false;
 animate();

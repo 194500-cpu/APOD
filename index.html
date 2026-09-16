@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Planets Expanded v1.0</title>
+    <title>Planets Expanded v1.0 - Planet Catalog</title>
   </head>
   <body>
     </div>
@@ -12,15 +12,57 @@
 
     <div id="navbar">
         <h1 id="navbartitle">
-            <strong>Planets Expanded</strong>
+            <strong>Planets Expanded - Catalog</strong>
         </h1>
     </div>
 
-    <div id="cycle">
-        <button id="cyclebutton">Next</button>
+    <div id="catalog">
+        <a class="item" href="./planets.html?planet=mercury">
+            <img src="./textures/viewmercury.png" alt="Mercury">
+            <h2>Mercury</h2>
+        </a>
+
+        <a class="item" href="./planets.html?planet=venus">
+            <img src="./textures/viewvenus.png" alt="Venus">
+            <h2>Venus</h2>
+        </a>
+
+        <a class="item" href="./planets.html?planet=earth">
+            <img src="./textures/viewearth.png" alt="Earth">
+            <h2>Earth</h2>
+        </a>
+
+        <a class="item" href="./planets.html?planet=mars">
+            <img src="./textures/viewmars.png" alt="Mars">
+            <h2>Mars</h2>
+        </a>
+
+        <a class="item" href="./planets.html?planet=jupiter">
+            <img src="./textures/viewjupiter.png" alt="Jupiter">
+            <h2>Jupiter</h2>
+        </a>
+
+        <a class="item" href="./planets.html?planet=saturn">
+            <img src="./textures/viewsaturn.png" alt="Saturn">
+            <h2>Saturn</h2>
+        </a>
+
+        <a class="item" href="./planets.html?planet=uranus">
+            <img src="./textures/viewuranus.png" alt="Uranus">
+            <h2>Uranus</h2>
+        </a>
+
+        <a class="item" href="./planets.html?planet=neptune">
+            <img src="./textures/viewneptune.png" alt="Neptune">
+            <h2>Neptune</h2>
+        </a>
+
     </div>
 
+
+
+
     <div id="app"></div>
-    <script type="module" src="/src/main.js"></script>
+    <script type="module" src="/src/catalog.js"></script>
   </body>
 </html>

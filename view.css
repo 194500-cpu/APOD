@@ -2,7 +2,13 @@ body {
   text-align: center;
   color: white;
   background: black;
-  } 
+  font-family: "Orbitron", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+} 
+
+
+
 
 #navbar {
     display: flex;
@@ -22,14 +28,15 @@ body {
 
 }
 
-#cycle {
+#back {
   position: fixed;
   bottom: 35px;
   left: 50%;
   transform: translateX(-50%);
+
 }
 
-#cyclebutton {
+#backbutton {
   padding: 12px 28px;
   font-size: 17px;
   font-weight: bold;
@@ -41,11 +48,11 @@ body {
   transition: 0.2s;
 }
 
-#cyclebutton:hover {
+#backbutton:hover {
   background: #252d4d;
   transform: scale(1.06);
 }
 
-#cyclebutton:active {
+#backbutton:active {
   transform: scale(0.96);
 }
