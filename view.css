@@ -12,11 +12,11 @@ body {
 
 #navbar {
     display: flex;
-    width: 50%;
+    width: 40%;
     justify-content: center;
     align-items: center;
-    margin-left: 25%;
-    background-color: rgb(108, 84, 84);
+    margin-left: 30%;
+    background-color: #252d4d;
     border-radius: 30px;
 }
 
@@ -55,4 +55,17 @@ body {
 
 #backbutton:active {
   transform: scale(0.96);
+}
+
+#inforight {
+  background: #252d4d;
+  opacity: 80%;
+  border-radius: 12px;
+  width: fit-content;
+  padding: 10px;
+  position: absolute;
+  right: 2%;
+  top: 10%;
+  text-align: left;
+  font-family: 'Exo 2', sans-serif;
 }
