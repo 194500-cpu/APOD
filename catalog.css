@@ -16,9 +16,14 @@
     align-items: center;
     margin-left: 25%;
     background-color: #252d4d;
+    border: 1px solid rgba(0, 243, 255, 0.2);
     border-radius: 30px;
+    opacity: 90%;
 }
 
+#navbar:hover {
+
+}
 
 #navbartitle {
     color: white;
@@ -42,7 +47,6 @@
   background: black;
   border-radius: 16px;
   padding: 2px;
-  height: width;
   text-align: center;
   text-decoration: none;
   color: white;
