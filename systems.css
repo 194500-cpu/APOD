@@ -1,0 +1,146 @@
+
+  body {
+    text-align: center;
+    color: white;
+    background: black;
+    font-family: "Orbitron", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+
+  } 
+
+#navbar {
+    display: flex;
+    width: 50%;
+    justify-content: center;
+    align-items: center;
+    margin-left: 25%;
+    background-color: #252d4d;
+    border: 1px solid rgba(0, 243, 255, 0.2);
+    border-radius: 30px;
+    opacity: 90%;
+}
+
+
+#navbartitle {
+    color: white;
+    font-size: 1.5rem;
+    margin-left: 1rem;
+
+}
+
+#tree {
+  margin-top: 80px;
+}
+
+
+.root-node {
+  display: inline-block;
+
+  padding: 20px 40px;
+
+  background: #252d4d;
+
+  border: 1px solid #00f3ff;
+  border-radius: 20px;
+
+  font-size: 1.3rem;
+}
+
+
+
+.trunk {
+  width: 3px;
+  height: 80px;
+
+  background: #00f3ff;
+  margin: 0 auto;
+}
+
+
+.systems-row {
+  position: relative;
+
+  display: flex;
+  justify-content: space-around;
+
+  max-width: 900px;
+
+  margin: 0 auto;
+  padding-top: 60px;
+}
+
+
+.systems-row::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 16.8%;
+  right: 16.5%;
+
+  height: 10px;
+
+  background: #00f3ff;
+}
+
+
+.system-node {
+  position: relative;
+
+  width: 180px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+
+  background: black;
+
+  color: white;
+  text-decoration: none;
+  border-radius: 18px;
+
+  transition: 0.25s;
+}
+
+
+
+.system-node::before {
+  content: "";
+
+  position: absolute;
+
+  width: 10px;
+  height: 60px;
+
+  background: #00f3ff;
+
+  top: -60px;
+  left: 50%;
+}
+
+
+.system-node:hover {
+
+  background: #343f6b;
+
+  box-shadow: 0 0 20px rgba(0, 243, 255, 0.5);
+}
+
+#sunimg {
+    width: 80%;
+    aspect-ratio: 1/1;
+    object-fit: contain;
+}
+#trappistimg {
+    width: 60%;
+    margin-left: 10px;
+    aspect-ratio: 1/1;
+    object-fit: contain;
+}
+#alphacentauriimg {
+    width: 70%;
+    aspect-ratio: 1/1;
+    object-fit: contain;
+}

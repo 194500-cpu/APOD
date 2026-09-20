@@ -21,14 +21,12 @@
     opacity: 90%;
 }
 
-#navbar:hover {
-
-}
 
 #navbartitle {
     color: white;
     font-size: 1.5rem;
     margin-left: 1rem;
+
 
 }
 
@@ -64,4 +62,12 @@
   aspect-ratio: 1 / 1;
 
   object-fit: contain;
+}
+
+#back {
+  position: fixed;
+  top: 15px;
+  left: 10%;
+
+
 }

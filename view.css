@@ -9,15 +9,16 @@ body {
 
 
 
-
 #navbar {
     display: flex;
-    width: 40%;
+    width: 50%;
     justify-content: center;
     align-items: center;
-    margin-left: 30%;
+    margin-left: 25%;
     background-color: #252d4d;
+    border: 1px solid rgba(0, 243, 255, 0.2);
     border-radius: 30px;
+    opacity: 90%;
 }
 
 
