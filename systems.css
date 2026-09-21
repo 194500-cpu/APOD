@@ -85,6 +85,16 @@
   background: #00f3ff;
 }
 
+body {
+    opacity: 0;
+    animation: fadeIn 0.4s forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
 
 .system-node {
   position: relative;

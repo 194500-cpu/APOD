@@ -32,9 +32,15 @@ var planetinfo = {
   "trappist1g": "Planet: TRAPPIST-1g <br> Diameter: 14450 km <br> Mass: 2.33 x 10²⁴ kg <br> Strength of Gravity: 11.08 m/s² <br> Day duration: Tidally Locked (12.4 Earth Days) <br> Distance from the Sun: 6,830,000 km (From Host Star) <br> <br> <strong>Description:</strong> <br> The second largest world in the system, TRAPPIST-1g orbits <br>near the outer edge of the habitable zone. It is heavily <br>shrouded and likely colder than Earth.",
   "trappist1h": "Planet: TRAPPIST-1h <br> Diameter: 9880 km <br> Mass: 6.56 x 10²³ kg <br> Strength of Gravity: 5.39 m/s² <br> Day duration: Tidally Locked (18.8 Earth Days) <br> Distance from the Sun: 9,270,000 km (From Host Star) <br> <br> <strong>Description:</strong> <br> The most distant planet from its host dwarf star, <br>TRAPPIST-1h is a freezing, sub-Earth sized desert world <br>hypothesised to be covered in an absolute shell of ice.",
   "proximab": "Planet: Proxima Centauri b <br> Diameter: 13130 km <br> Mass: 6.39 x 10²⁴ kg <br> Strength of Gravity: 10.3 m/s² <br> Day duration: Tidally Locked (11.2 Earth Days) <br> Distance from the Sun: 7,500,000 km (From Host Star) <br> <br> <strong>Description:</strong> <br> Orbiting inside the habitable zone of the closest star to our <br>Solar System, Proxima Centauri b experiences extreme stellar <br>radiation that may strip away volatile elements like water.",
-  "cancrie": "",
+  "taucetif": "Planet: Tau Ceti f <br> Diameter: 23000 km <br> Mass: 2.35 x 10²⁵ kg <br> Strength of Gravity: 11.78 m/s² <br> Day duration: UNKNOWN <br> Distance from the Sun: 199,600,000 km (From Host Star) <br> <br> <strong>Description:</strong> <br> A super-Earth exoplanet, Tau Ceti f was analyzed using radial velocity data.",
+  "taucetig": "Planet: Tau Ceti g <br> Diameter: ~15036 km <br> Mass: 1.05 x 10²⁵ kg <br> Strength of Gravity: ~12.33 m/s² <br> Day duration: UNKNOWN <br> Distance from the Sun: 19,900,000 km (From Host Star) <br> <br> <strong>Description:</strong> <br> Tau Ceti g is a possible super-Earth orbiting the nearby <br>Sun-like star Tau Ceti. Detected through radial velocity data, <br>its existence remains controversial and is not yet fully certain.",
+  "taucetih": "Planet: Tau Ceti h <br> Diameter: ~15163 km <br> Mass: 1.09 x 10²⁵ kg <br> Strength of Gravity: ~12.67 m/s² <br> Day duration: UNKNOWN <br> Distance from the Sun: 36,400,000 km (From Host Star) <br> <br> <strong>Description:</strong> <br> Tau Ceti h is a possible super-Earth with an orbital period <br>of about 49 days. Like the other proposed Tau Ceti planets, <br>its detection remains controversial and requires confirmation.",
+  "cancrib": "Planet: 55 Cancri b <br> Diameter: ~173377 km <br> Mass: 1.58 x 10²⁷ kg <br> Strength of Gravity: ~13.39 m/s² <br> Day duration: UNKNOWN <br> Distance from the Sun: ~17,700,000 km (From Host Star) <br> <br> <strong>Description:</strong> <br> 55 Cancri b is a hot gas giant orbiting extremely close to <br>its host star. Similar in mass to Jupiter, it completes an <br>entire orbit in only about 14.7 Earth days.",
+  "cancric": "Planet: 55 Cancri c <br> Diameter: ~106263 km <br> Mass: 3.25 x 10²⁶ kg <br> Strength of Gravity: ~7.36 m/s² <br> Day duration: UNKNOWN <br> Distance from the Sun: ~37,000,000 km (From Host Star) <br> <br> <strong>Description:</strong> <br> 55 Cancri c is a gas giant significantly less massive than <br>Jupiter. It races around its star every 44 days and is one <br>of several giant planets packed into the 55 Cancri system.",
+  "cancrid": "Planet: 55 Cancri d <br> Diameter: ~162191 km <br> Mass: 7.36 x 10²⁷ kg <br> Strength of Gravity: ~71.44 m/s² <br> Day duration: UNKNOWN <br> Distance from the Sun: ~838,000,000 km (From Host Star) <br> <br> <strong>Description:</strong> <br> 55 Cancri d is a massive outer gas giant several times the <br>mass of Jupiter. Unlike the system's tightly packed inner planets, <br>it takes roughly 13 years to complete one orbit of its star.",
+  "cancrie": "Planet: 55 Cancri e <br> Diameter: ~23891 km <br> Mass: 4.77 x 10²⁵ kg <br> Strength of Gravity: ~22.29 m/s² <br> Day duration: ~18 hours (Possibly Tidally Locked) <br> Distance from the Sun: 2,310,000 km (From Host Star) <br> <br> <strong>Description:</strong> <br> 55 Cancri e is an extremely hot rocky super-Earth orbiting <br>so close to its star that a year lasts less than 18 hours. <br>Its surface may contain vast regions of molten rock.",
+  "cancrif": "Planet: 55 Cancri f <br> Diameter: ~94658 km <br> Mass: 2.68 x 10²⁶ kg <br> Strength of Gravity: ~7.63 m/s² <br> Day duration: UNKNOWN <br> Distance from the Sun: ~120,000,000 km (From Host Star) <br> <br> <strong>Description:</strong> <br> 55 Cancri f is a gas giant orbiting farther from its star than <br>the system's tightly packed inner planets. Its 260-day orbit <br>places it near the outer region of the star's habitable zone."
 
-  
 }
 
 const params = new URLSearchParams(window.location.search);
@@ -262,6 +268,11 @@ const controls = new OrbitControls(camera, renderer.domElement);
 
 controls.enableDamping = true;
 
+controls.enableDamping = true;
+controls.dampingFactor = 0.05;
+
+controls.minDistance = 1.7;
+controls.maxDistance = 6;
 camera.setViewOffset(
   window.innerWidth,
   window.innerHeight,
