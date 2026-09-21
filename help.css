@@ -1,0 +1,47 @@
+body {
+    text-align: center;
+    color: white;
+    background: black;
+    font-family: "Orbitron", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+
+  } 
+
+#navbar {
+    display: flex;
+    width: 50%;
+    justify-content: center;
+    align-items: center;
+    margin-left: 25%;
+
+    opacity: 90%;
+}
+#backbutton {
+  padding: 10px 18px;
+
+  background: rgba(37, 45, 77, 0.8);
+  color: white;
+
+  border: 1px solid rgba(0, 243, 255, 0.25);
+  border-radius: 20px;
+
+  font-family: "Orbitron", sans-serif;
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+#backbutton:hover {
+  background: #343f6b;
+  border-color: #00f3ff;
+  transform: translateX(-3px);
+}
+
+#text {
+  text-align: left;
+  margin-left: 40%;
+  padding: 2%;
+  font-family: 'Exo 2', sans-serif;
+
+}

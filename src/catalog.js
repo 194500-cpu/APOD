@@ -53,7 +53,16 @@ const systemNames = {
   tauceti: "Tau Ceti",
   cancri: "55 Cancri"
 };
+const helpButton = document.getElementById("helpbutton");
 
+helpButton.addEventListener("click", () => {
+    const currentPage =
+        window.location.pathname.split("/").pop() +
+        window.location.search;
+
+    window.location.href =
+        `./help.html?return=${encodeURIComponent(currentPage)}`;
+});
 const backButton = document.getElementById("backbutton");
 
 backButton.addEventListener("click", () => {

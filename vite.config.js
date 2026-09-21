@@ -9,7 +9,8 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, 'index.html'),
         planet: resolve(__dirname, 'planets.html'),
-        catalog: resolve(__dirname, 'catalog.html')
+        catalog: resolve(__dirname, 'catalog.html'),
+        help: resolve(__dirname, 'help.html')
       }
     }
   }

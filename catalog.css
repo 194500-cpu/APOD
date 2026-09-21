@@ -12,12 +12,10 @@
 #navbar {
     display: flex;
     width: 50%;
+    background: none;
     justify-content: center;
     align-items: center;
     margin-left: 25%;
-    background-color: #252d4d;
-    border: 1px solid rgba(0, 243, 255, 0.2);
-    border-radius: 30px;
     opacity: 90%;
 }
 
@@ -26,7 +24,7 @@
     color: white;
     font-size: 1.5rem;
     margin-left: 1rem;
-
+    background: none;
 
 }
 
@@ -107,9 +105,33 @@ body {
 }
 
 #system {
-  background: #252d4d;
+
   width: 50%;
   margin-left: 25%;
   border-radius: 30px;
   padding: 1%;
+}
+#helpbutton {
+  position: fixed;
+  bottom: 20px;
+  right: 25px;
+
+  padding: 10px 18px;
+
+  background: rgba(37, 45, 77, 0.8);
+  color: white;
+
+  border: 1px solid rgba(0, 243, 255, 0.25);
+  border-radius: 20px;
+
+  font-family: "Orbitron", sans-serif;
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+#helpbutton:hover {
+  background: #343f6b;
+  border-color: #00f3ff;
+  transform: translateX(-3px);
 }

@@ -49,9 +49,30 @@ const params = new URLSearchParams(window.location.search);
 const currentPlanet = params.get("planet");
 let text = document.getElementById("inforight");
 text.innerHTML = planetinfo[currentPlanet];
+const toggleInfo = document.getElementById("toggleinfo");
+
+toggleInfo.addEventListener("click", () => {
+
+  text.classList.toggle("hidden");
+
+  if (text.classList.contains("hidden")) {
+    toggleInfo.textContent = "INFO +";
+  } else {
+    toggleInfo.textContent = "INFO −";
+  }
+
+});
 const system = params.get("system");
+const helpButton = document.getElementById("helpbutton");
 
+helpButton.addEventListener("click", () => {
+    const currentPage =
+        window.location.pathname.split("/").pop() +
+        window.location.search;
 
+    window.location.href =
+        `./help.html?return=${encodeURIComponent(currentPage)}`;
+});
 
 
 const backButton = document.getElementById("backbutton");
@@ -156,19 +177,16 @@ const nebulaMaterial = new THREE.ShaderMaterial({
 
     uniform float time;
 
-    // 3D Pseudo-random generator
     float random(vec3 p) {
       return fract(
         sin(dot(p, vec3(12.9898, 78.233, 45.164))) * 43758.5453
       );
     }
 
-    // 3D Value Noise
     float noise(vec3 p) {
       vec3 i = floor(p);
       vec3 f = fract(p);
 
-      // Smooth interpolation curves
       vec3 u = f * f * (3.0 - 2.0 * f);
 
       float n000 = random(i + vec3(0.0, 0.0, 0.0));
@@ -195,7 +213,6 @@ const nebulaMaterial = new THREE.ShaderMaterial({
       );
     }
 
-    // 3D Fractional Brownian Motion
     float fbm(vec3 p) {
       float value = 0.0;
       float amplitude = 0.5;
@@ -210,10 +227,10 @@ const nebulaMaterial = new THREE.ShaderMaterial({
     }
 
     void main() {
-      // Scale down 3D position so noise frequency matches sphere size
+
       vec3 pos = vPosition * 0.05;
 
-      // Drift through 3D space over time
+
       pos.x += time * 0.01;
       pos.y += time * 0.005;
 
