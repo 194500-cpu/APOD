@@ -7,8 +7,6 @@ body {
   font-style: normal;
 } 
 
-
-
 #navbar {
     display: flex;
     width: 50%;
@@ -29,34 +27,8 @@ body {
 
 }
 
-#back {
-  position: fixed;
-  bottom: 35px;
-  left: 50%;
-  transform: translateX(-50%);
 
-}
 
-#backbutton {
-  padding: 12px 28px;
-  font-size: 17px;
-  font-weight: bold;
-  color: white;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 12px;
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-#backbutton:hover {
-  background: #252d4d;
-  transform: scale(1.06);
-}
-
-#backbutton:active {
-  transform: scale(0.96);
-}
 
 #inforight {
   background: #252d4d;

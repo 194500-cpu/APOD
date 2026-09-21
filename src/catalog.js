@@ -25,8 +25,24 @@ const systemscatalog = {
 
     alphacentauri: [
         { id: "proximab", name: "Proxima Centauri b" }
-    ]
+    ],
 
+    tauceti: [
+        { id: "taucetif", name: "Tau Ceti f"},
+        { id: "taucetig", name: "Tau Ceti g"},
+        { id: "taucetih", name: "Tau Ceti h"}
+        
+    ],
+    cancri: [
+        { id: "cancrib", name: "55 Cancri b"},
+        { id: "cancric", name: "55 Cancri c"},
+        { id: "cancrid", name: "55 Cancri d"},
+        { id: "cancrie", name: "55 Cancri e"},
+        { id: "cancrif", name: "55 Cancri f"}
+        
+
+
+    ]
 };
 const navbar = document.getElementById("navbar");
 navbar.addEventListener("click", () => {

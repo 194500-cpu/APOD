@@ -31,7 +31,8 @@ var planetinfo = {
   "trappist1f": "Planet: TRAPPIST-1f <br> Diameter: 13320 km <br> Mass: 1.31 x 10²⁴ kg <br> Strength of Gravity: 7.35 m/s² <br> Day duration: Tidally Locked (9.2 Earth Days) <br> Distance from the Sun: 5,540,000 km (From Host Star) <br> <br> <strong>Description:</strong> <br> A potentially ocean-bearing planet within the habitable zone, <br>TRAPPIST-1f is likely an ice-rich rocky world with a tight <br>atmosphere, locked in permanent day and night sides.",
   "trappist1g": "Planet: TRAPPIST-1g <br> Diameter: 14450 km <br> Mass: 2.33 x 10²⁴ kg <br> Strength of Gravity: 11.08 m/s² <br> Day duration: Tidally Locked (12.4 Earth Days) <br> Distance from the Sun: 6,830,000 km (From Host Star) <br> <br> <strong>Description:</strong> <br> The second largest world in the system, TRAPPIST-1g orbits <br>near the outer edge of the habitable zone. It is heavily <br>shrouded and likely colder than Earth.",
   "trappist1h": "Planet: TRAPPIST-1h <br> Diameter: 9880 km <br> Mass: 6.56 x 10²³ kg <br> Strength of Gravity: 5.39 m/s² <br> Day duration: Tidally Locked (18.8 Earth Days) <br> Distance from the Sun: 9,270,000 km (From Host Star) <br> <br> <strong>Description:</strong> <br> The most distant planet from its host dwarf star, <br>TRAPPIST-1h is a freezing, sub-Earth sized desert world <br>hypothesised to be covered in an absolute shell of ice.",
-  "proximab": "Planet: Proxima Centauri b <br> Diameter: 13130 km <br> Mass: 6.39 x 10²⁴ kg <br> Strength of Gravity: 10.3 m/s² <br> Day duration: Tidally Locked (11.2 Earth Days) <br> Distance from the Sun: 7,500,000 km (From Host Star) <br> <br> <strong>Description:</strong> <br> Orbiting inside the habitable zone of the closest star to our <br>Solar System, Proxima Centauri b experiences extreme stellar <br>radiation that may strip away volatile elements like water."
+  "proximab": "Planet: Proxima Centauri b <br> Diameter: 13130 km <br> Mass: 6.39 x 10²⁴ kg <br> Strength of Gravity: 10.3 m/s² <br> Day duration: Tidally Locked (11.2 Earth Days) <br> Distance from the Sun: 7,500,000 km (From Host Star) <br> <br> <strong>Description:</strong> <br> Orbiting inside the habitable zone of the closest star to our <br>Solar System, Proxima Centauri b experiences extreme stellar <br>radiation that may strip away volatile elements like water.",
+  "cancrie": "",
 
   
 }
@@ -42,10 +43,7 @@ let text = document.getElementById("inforight");
 text.innerHTML = planetinfo[currentPlanet];
 const system = params.get("system");
 
-const backbutton = document.getElementById("back");
-backbutton.addEventListener("click", () => {
-  window.location.href = `./catalog.html?system=${system}`;
-});
+
 
 const navbar = document.getElementById("navbar");
 navbar.addEventListener("click", () => {
@@ -116,12 +114,11 @@ const ringMaterial = new THREE.MeshBasicMaterial({
 
 const rings = new THREE.Mesh(ringGeometry, ringMaterial);
 rings.rotation.x = Math.PI / 2;
-if (currentPlanet == "saturn") {
+if (currentPlanet == "saturn" || currentPlanet == "cancrid") {
     rings.visible = true;
   } else {
     rings.visible = false;
 }
-
 
 const nebulaGeometry = new THREE.SphereGeometry(50, 64, 64);
 
@@ -134,10 +131,10 @@ const nebulaMaterial = new THREE.ShaderMaterial({
   },
 
   vertexShader: `
-    varying vec2 vUv;
+    varying vec3 vPosition;
 
     void main() {
-      vUv = uv;
+      vPosition = position;
 
       gl_Position = projectionMatrix *
                     modelViewMatrix *
@@ -146,67 +143,68 @@ const nebulaMaterial = new THREE.ShaderMaterial({
   `,
 
   fragmentShader: `
-    varying vec2 vUv;
+    varying vec3 vPosition;
 
     uniform float time;
 
-
-    float random(vec2 st) {
+    // 3D Pseudo-random generator
+    float random(vec3 p) {
       return fract(
-        sin(dot(st.xy, vec2(12.9898, 78.233)))
-        * 43758.5453
+        sin(dot(p, vec3(12.9898, 78.233, 45.164))) * 43758.5453
       );
     }
 
+    // 3D Value Noise
+    float noise(vec3 p) {
+      vec3 i = floor(p);
+      vec3 f = fract(p);
 
-    float noise(vec2 st) {
+      // Smooth interpolation curves
+      vec3 u = f * f * (3.0 - 2.0 * f);
 
-      vec2 i = floor(st);
-      vec2 f = fract(st);
-
-      float a = random(i);
-      float b = random(i + vec2(1.0, 0.0));
-      float c = random(i + vec2(0.0, 1.0));
-      float d = random(i + vec2(1.0, 1.0));
-
-      vec2 u = f * f * (3.0 - 2.0 * f);
+      float n000 = random(i + vec3(0.0, 0.0, 0.0));
+      float n100 = random(i + vec3(1.0, 0.0, 0.0));
+      float n010 = random(i + vec3(0.0, 1.0, 0.0));
+      float n110 = random(i + vec3(1.0, 1.0, 0.0));
+      float n001 = random(i + vec3(0.0, 0.0, 1.0));
+      float n101 = random(i + vec3(1.0, 0.0, 1.0));
+      float n011 = random(i + vec3(0.0, 1.0, 1.0));
+      float n111 = random(i + vec3(1.0, 1.0, 1.0));
 
       return mix(
-        a,
-        b,
-        u.x
-      ) +
-      (c - a) * u.y * (1.0 - u.x) +
-      (d - b) * u.x * u.y;
+        mix(
+          mix(n000, n100, u.x),
+          mix(n010, n110, u.x),
+          u.y
+        ),
+        mix(
+          mix(n001, n101, u.x),
+          mix(n011, n111, u.x),
+          u.y
+        ),
+        u.z
+      );
     }
 
-
-    float fbm(vec2 st) {
-
+    // 3D Fractional Brownian Motion
+    float fbm(vec3 p) {
       float value = 0.0;
       float amplitude = 0.5;
 
-      for(int i = 0; i < 6; i++) {
-
-        value += amplitude * noise(st);
-
-        st *= 2.0;
-
+      for (int i = 0; i < 6; i++) {
+        value += amplitude * noise(p);
+        p *= 2.0;
         amplitude *= 0.5;
       }
 
       return value;
     }
 
-
     void main() {
+      // Scale down 3D position so noise frequency matches sphere size
+      vec3 pos = vPosition * 0.05;
 
-      vec2 uv = vUv;
-
-
-      vec2 pos = uv * 5.0;
-
-
+      // Drift through 3D space over time
       pos.x += time * 0.01;
       pos.y += time * 0.005;
 
@@ -218,36 +216,25 @@ const nebulaMaterial = new THREE.ShaderMaterial({
         cloud
       );
 
-      vec3 blue =
-        vec3(0.05, 0.12, 0.35);
+      vec3 blue = vec3(0.05, 0.12, 0.35);
+      vec3 purple = vec3(0.22, 0.05, 0.32);
+      vec3 black = vec3(0.001, 0.002, 0.008);
 
-      vec3 purple =
-        vec3(0.22, 0.05, 0.32);
+      vec3 colour = mix(
+        black,
+        blue,
+        cloud
+      );
 
-      vec3 black =
-        vec3(0.001, 0.002, 0.008);
-
-
-      vec3 colour =
-        mix(
-          black,
-          blue,
-          cloud
-        );
-
-      colour =
-        mix(
-          colour,
-          purple,
-          cloud * cloud
-        );
-
+      colour = mix(
+        colour,
+        purple,
+        cloud * cloud
+      );
 
       colour *= 0.65;
 
-
-      gl_FragColor =
-        vec4(colour, 1.0);
+      gl_FragColor = vec4(colour, 1.0);
     }
   `
 });

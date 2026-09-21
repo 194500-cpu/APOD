@@ -77,8 +77,8 @@
   position: absolute;
 
   top: 0;
-  left: 16.8%;
-  right: 16.5%;
+  left: 10.8%;
+  right: 9.5%;
 
   height: 10px;
 
@@ -141,6 +141,19 @@
 }
 #alphacentauriimg {
     width: 70%;
+    aspect-ratio: 1/1;
+    object-fit: contain;
+}
+
+
+#taucetiimg {
+    width: 90%;
+    aspect-ratio: 1/1;
+    object-fit: contain;
+}
+
+#a55cancriimg {
+    width: 80%;
     aspect-ratio: 1/1;
     object-fit: contain;
 }
