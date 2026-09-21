@@ -39,7 +39,9 @@ var planetinfo = {
   "cancric": "Planet: 55 Cancri c <br> Diameter: ~106263 km <br> Mass: 3.25 x 10²⁶ kg <br> Strength of Gravity: ~7.36 m/s² <br> Day duration: UNKNOWN <br> Distance from the Sun: ~37,000,000 km (From Host Star) <br> <br> <strong>Description:</strong> <br> 55 Cancri c is a gas giant significantly less massive than <br>Jupiter. It races around its star every 44 days and is one <br>of several giant planets packed into the 55 Cancri system.",
   "cancrid": "Planet: 55 Cancri d <br> Diameter: ~162191 km <br> Mass: 7.36 x 10²⁷ kg <br> Strength of Gravity: ~71.44 m/s² <br> Day duration: UNKNOWN <br> Distance from the Sun: ~838,000,000 km (From Host Star) <br> <br> <strong>Description:</strong> <br> 55 Cancri d is a massive outer gas giant several times the <br>mass of Jupiter. Unlike the system's tightly packed inner planets, <br>it takes roughly 13 years to complete one orbit of its star.",
   "cancrie": "Planet: 55 Cancri e <br> Diameter: ~23891 km <br> Mass: 4.77 x 10²⁵ kg <br> Strength of Gravity: ~22.29 m/s² <br> Day duration: ~18 hours (Possibly Tidally Locked) <br> Distance from the Sun: 2,310,000 km (From Host Star) <br> <br> <strong>Description:</strong> <br> 55 Cancri e is an extremely hot rocky super-Earth orbiting <br>so close to its star that a year lasts less than 18 hours. <br>Its surface may contain vast regions of molten rock.",
-  "cancrif": "Planet: 55 Cancri f <br> Diameter: ~94658 km <br> Mass: 2.68 x 10²⁶ kg <br> Strength of Gravity: ~7.63 m/s² <br> Day duration: UNKNOWN <br> Distance from the Sun: ~120,000,000 km (From Host Star) <br> <br> <strong>Description:</strong> <br> 55 Cancri f is a gas giant orbiting farther from its star than <br>the system's tightly packed inner planets. Its 260-day orbit <br>places it near the outer region of the star's habitable zone."
+  "cancrif": "Planet: 55 Cancri f <br> Diameter: ~94658 km <br> Mass: 2.68 x 10²⁶ kg <br> Strength of Gravity: ~7.63 m/s² <br> Day duration: UNKNOWN <br> Distance from the Sun: ~120,000,000 km (From Host Star) <br> <br> <strong>Description:</strong> <br> 55 Cancri f is a gas giant orbiting farther from its star than <br>the system's tightly packed inner planets. Its 260-day orbit <br>places it near the outer region of the star's habitable zone.",
+  "proximac": "Planet: Proxima Centauri c <br> Diameter: 15000 km <br> Mass: 7.0 x 10²⁴ kg <br> Strength of Gravity: 9.8 m/s² <br> Day duration: Tidally Locked (11.2 Earth Days) <br> Distance from the Sun: 1,480,000,000 km (From Host Star) <br> <br> <strong>Description:</strong> <br> Proxima Centauri c is a super-Earth exoplanet orbiting <br> the closest star to our Solar System. It is located in <br> the outer region of its star's habitable zone and may <br> have a thick atmosphere.",
+  "proximad": "Planet: Proxima Centauri d <br> Diameter: 12000 km <br> Mass: 3.0 x 10²⁴ kg <br> Strength of Gravity: 8.5 m/s² <br> Day duration: Tidally Locked (11.2 Earth Days) <br> Distance from the Sun: 1,000,000 km (From Host Star) <br> <br> <strong>Description:</strong> <br> Proxima Centauri d is a small rocky exoplanet <br> orbiting very close to its host star. It is likely tidally <br> locked and experiences extreme stellar radiation, making it <br> inhospitable for life as we know it."
 
 }
 
@@ -51,11 +53,12 @@ const system = params.get("system");
 
 
 
-const navbar = document.getElementById("navbar");
-navbar.addEventListener("click", () => {
+
+const backButton = document.getElementById("backbutton");
+
+backButton.addEventListener("click", () => {
   window.location.href = `./catalog.html?system=${system}`;
 });
-
 const scene = new THREE.Scene();
 
 const camera = new THREE.PerspectiveCamera(

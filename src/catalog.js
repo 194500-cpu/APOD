@@ -24,7 +24,9 @@ const systemscatalog = {
     ],
 
     alphacentauri: [
-        { id: "proximab", name: "Proxima Centauri b" }
+        { id: "proximab", name: "Proxima Centauri b" },
+        { id: "proximac", name: "Proxima Centauri c" },
+        { id: "proximad", name: "Proxima Centauri d" }
     ],
 
     tauceti: [
@@ -44,16 +46,25 @@ const systemscatalog = {
 
     ]
 };
-const navbar = document.getElementById("navbar");
-navbar.addEventListener("click", () => {
-  window.location.href = `./index.html`;
-});
+const systemNames = {
+  solar: "Solar System",
+  trappist: "TRAPPIST-1",
+  alphacentauri: "Alpha Centauri",
+  tauceti: "Tau Ceti",
+  cancri: "55 Cancri"
+};
 
+const backButton = document.getElementById("backbutton");
+
+backButton.addEventListener("click", () => {
+  window.location.href = "./index.html";
+});
 const params = new URLSearchParams(window.location.search);
 
 const currentSystem = params.get("system");
 
-console.log(currentSystem);
+document.getElementById("system").textContent = systemNames[currentSystem];
+
 
 const planets = systemscatalog[currentSystem];
 

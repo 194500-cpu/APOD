@@ -81,3 +81,35 @@ body {
         opacity: 1;
     }
 }
+#backbutton {
+  position: fixed;
+  top: 20px;
+  left: 25px;
+
+  padding: 10px 18px;
+
+  background: rgba(37, 45, 77, 0.8);
+  color: white;
+
+  border: 1px solid rgba(0, 243, 255, 0.25);
+  border-radius: 20px;
+
+  font-family: "Orbitron", sans-serif;
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+#backbutton:hover {
+  background: #343f6b;
+  border-color: #00f3ff;
+  transform: translateX(-3px);
+}
+
+#system {
+  background: #252d4d;
+  width: 50%;
+  margin-left: 25%;
+  border-radius: 30px;
+  padding: 1%;
+}
