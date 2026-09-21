@@ -1,5 +1,5 @@
 # Planets Expanded
-
+![alt text](<Screenshot 2026-09-21 at 8.22.33 PM.png>)
 Planets Expanded is a website I made using Three.js where you can explore different planets in 3D.
 
 You can choose a star system, look through the planets in that system, and then open a 3D viewer for each planet.
